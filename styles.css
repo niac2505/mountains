@@ -42,7 +42,7 @@ h1 {
     padding: 15px; 
     border: none;
     cursor: pointer;
-    background-image: url('sun.png');
+    background-image: url('magnifying.png');
     background-size: 70%;
     background-position: center;
     background-repeat: no-repeat;
@@ -57,7 +57,7 @@ h1 {
 
 #displayedImage {
     display: none;
-    height: 90vh;
+    height: 112vh;
     border-radius: 10px;
     -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
     mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
