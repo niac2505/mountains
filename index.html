@@ -10,21 +10,23 @@
 </head>
 <body>
 
-    <div class="container">
-        <!-- <h1>UNION SHADOWS</h1> -->
-        <div class="input-group">
-            <input type="text" id="charInput1" maxlength="1">
-            <input type="text" id="charInput2" maxlength="1">
-            <button onclick="displayImage()" id="submitButton"></button>
-        </div>
-    </div>    
+<div class="container">
+    <h1>FUJI PHASES</h1>
+    <div class="input-group">
+        <input type="text" id="charInput1" maxlength="1">
+        <input type="text" id="charInput2" maxlength="1">
+        <button onclick="displayImage()" id="submitButton"></button>
+    </div>
+</div> 
+
+<p id="errorMessage"></p>
 
     <img id="displayedImage" src="" alt="Displayed Image" style="display:none;">
 
     <!-- Image Display Script Below -->
     <script>
         
-function displayImage() {
+        function displayImage() {
     const imgElement = document.getElementById("displayedImage");
     const errorElement = document.getElementById("errorMessage");
 
@@ -37,9 +39,10 @@ function displayImage() {
 
     // Validate inputs (check if they are letters)
     if (!validLetterRegex.test(input1) || !validLetterRegex.test(input2)) {
-        errorElement.textContent = "Error: Please enter a single letter (A-Z) in both fields.";
+        errorElement.textContent = "ENTER A LETTER IN EACH FIELD TO EXPLORE MOUNT FUJI";
         imgElement.src = "error.png";
         imgElement.style.display = "block";
+        imgElement.style.opacity = 0;  // Hide the image initially
         return;
     } else {
         errorElement.textContent = ""; // Clear error message
@@ -54,11 +57,11 @@ function displayImage() {
     };
 
     const timeSlots = {
-        "1": ["A", "B"],
-        "2": ["C", "D"],
-        "3": ["E","F",],
-        "4": ["G", "H",],
-        "5": ["I", "J", "K"],
+        "1": ["A", "B", "C"],
+        "2": ["D", "E" ],
+        "3": ["F","G"],
+        "4": ["H","I"],
+        "5": ["J", "K"],
         "6": ["L","M", "N",],
         "7": ["O", "P", "Q"], 
         "8": ["R", "S", "T"],
@@ -134,17 +137,16 @@ function displayImage() {
         "top_10": "top/top_10.png",
     };
 
-
     let selectedElevation = null;
     let selectedTimeSlot = null;
 
     // Find the corresponding elevation
     for (const [key, letters] of Object.entries(elevation)) {
-    if (letters.includes(input1)) {
-        selectedElevation = key;
-        break;
+        if (letters.includes(input1)) {
+            selectedElevation = key;
+            break;
+        }
     }
-}
 
     // Find the corresponding time slot
     for (const [time, letters] of Object.entries(timeSlots)) {
@@ -161,20 +163,30 @@ function displayImage() {
     // Display the correct image if found
     if (imagePath) {
         imgElement.src = imagePath;
+
+        imgElement.style.animation = 'none';
+        imgElement.offsetHeight;
+        imgElement.style.animation = '';
+
+        imgElement.style.opacity = 0; 
         imgElement.style.display = "block";
+
+        setTimeout(() => {
+            imgElement.style.opacity = 1;
+        }, 50);
+
     } else {
         imgElement.src = "error.png";
-        errorElement.textContent = "Error: Please enter a single letter (A-Z) in both fields.";
+        errorElement.textContent = "Error: Please enter a valid letter combination.";
         imgElement.style.display = "block";
     }
 }
     </script>
 
-    <p id="errorMessage"></p>
-
+    <!--
     <div class="rotated-text">
         UNION SHADOWS
-    </div>
+    </div> -->
 
 
 </body>

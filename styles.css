@@ -5,20 +5,28 @@ body {
     text-align: right;
     margin-right: 5rem;
     margin-left: 5rem;
+    margin-top: 1rem;
 }
 
 h1 {
     font-weight: 800;
     color: whitesmoke;
-    text-align: left;
+    margin: 0;
+    padding: 0;
+    font-size: 30px;
+}
+
+p {
+    font-weight: 800;
+    text-align: center;
 }
 
 .container {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: 20px;
     width: 100%;
+    align-items: center;
 }
 
 .input-group {
@@ -28,13 +36,14 @@ h1 {
     gap: 1rem;
 }
 
+
 #charInput1, #charInput2 {
     border-radius: 10px;
     padding: 5px 10px;
     width: 50px;
     height: 15px;
-    text-align: center;
     z-index: 10;
+    text-align: center;
 }
 
 #submitButton {
@@ -42,7 +51,7 @@ h1 {
     padding: 15px; 
     border: none;
     cursor: pointer;
-    background-image: url('magnifying.png');
+    background-image: url('eye.png');
     background-size: 70%;
     background-position: center;
     background-repeat: no-repeat;
@@ -52,12 +61,18 @@ h1 {
 }
 
 #submitButton:hover {
-    background-color: rgb(240, 240, 211);
+    background-color: rgb(207, 229, 255);
+}
+
+#submitButton:focus {
+    background-color: rgb(207, 229, 255);
+    outline: solid #23285d;
 }
 
 #displayedImage {
     display: none;
-    height: 112vh;
+    width: 110%;
+    height: 100vh;
     border-radius: 10px;
     -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
     mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
@@ -66,6 +81,19 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
+    animation: fadeInOut 3s forwards; 
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .rotated-text {
@@ -87,9 +115,9 @@ h1 {
     text-align: center;
     z-index: 10;
     position: absolute;
-    top: 5%;
+    top: 10%;
     left: 50%;
     transform: translateX(-50%);
     font-weight: 500;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 250); 
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 250); 
 }
