@@ -53,7 +53,7 @@
         errorElement.textContent = "Wrong mountain.. enter a letter in each field";
         imgElement.src = "error.png";
         imgElement.style.display = "block";
-        imgElement.style.opacity = 0;  // Hide the image initially
+        imgElement.style.opacity = 0;  // hide the image
         return;
     } else {
         errorElement.textContent = "";
@@ -80,6 +80,7 @@
         "10": ["X", "Y", "Z"]
     };
 
+    //the elevations at different time slots
     const imagePaths = {
         "ground_1": "ground/ground_1.png",
         "ground_2": "ground/ground_2.png",
@@ -148,10 +149,11 @@
         "top_10": "top/top_10.png",
     };
 
+    //stores it, intially has nothing
     let selectedElevation = null;
     let selectedTimeSlot = null;
 
-    // corresponding elevation
+    // stores the elevation level in key and letter for each elevation if the right letter is inputted it triggers category
     for (const [key, letters] of Object.entries(elevation)) {
         if (letters.includes(input1)) {
             selectedElevation = key;
@@ -167,11 +169,11 @@
         }
     }
 
-    // image path from the mapping
+    // image path from the mapping - creates a key for each image so with the right letter, it sends signal to right image
     const imageKey = `${selectedElevation}_${selectedTimeSlot}`;
     const imagePath = imagePaths[imageKey];
 
-    // correct image if found
+    // finds if there is a correct image and display image, if there isnt right image shows error
     if (imagePath) {
         imgElement.src = imagePath;
 
@@ -188,7 +190,7 @@
 
     } else {
         imgElement.src = "error.png";
-        errorElement.textContent = "Error: Please enter a valid letter combination.";
+        errorElement.textContent = "Wrong mountain.. enter a letter in each field";
         imgElement.style.display = "block";
     }
 
